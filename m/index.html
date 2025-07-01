@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ro" class="html-document-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucrează de Acasă - Venit Suplimentar</title>
+    <style>
+        :root {
+            --primary-color-scheme: #2563eb;
+            --secondary-color-scheme: #1e40af;
+            --accent-color-variant: #3b82f6;
+            --background-primary-tone: #ffffff;
+            --background-secondary-tone: #f8fafc;
+            --text-primary-shade: #1e293b;
+            --text-secondary-shade: #64748b;
+            --border-neutral-variant: #e2e8f0;
+            --success-color-indication: #10b981;
+            --shadow-primary-depth: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-secondary-depth: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --border-radius-minimal: 0.375rem;
+            --border-radius-moderate: 0.75rem;
+            --border-radius-extensive: 1.5rem;
+            --spacing-unit-base: 1rem;
+            --typography-weight-normal: 400;
+            --typography-weight-medium: 500;
+            --typography-weight-semibold: 600;
+            --typography-weight-bold: 700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .document-body-container {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary-shade);
+            background-color: var(--background-primary-tone);
+        }
+
+        .layout-section-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit-base);
+        }
+
+        .header-hero-section-component {
+            background: linear-gradient(135deg, var(--primary-color-scheme) 0%, var(--secondary-color-scheme) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .hero-content-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .primary-heading-typography {
+            font-size: 3rem;
+            font-weight: var(--typography-weight-bold);
+            margin-bottom: var(--spacing-unit-base);
+            line-height: 1.2;
+        }
+
+        .secondary-heading-typography {
+            font-size: 1.25rem;
+            font-weight: var(--typography-weight-normal);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .content-section-block {
+            padding: 4rem 0;
+        }
+
+        .content-section-block:nth-child(even) {
+            background-color: var(--background-secondary-tone);
+        }
+
+        .section-heading-element {
+            font-size: 2.5rem;
+            font-weight: var(--typography-weight-bold);
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color-scheme);
+        }
+
+        .descriptive-text-paragraph {
+            font-size: 1.125rem;
+            color: var(--text-secondary-shade);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid-layout-system {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card-component-wrapper {
+            background: var(--background-primary-tone);
+            padding: 2rem;
+            border-radius: var(--border-radius-moderate);
+            box-shadow: var(--shadow-primary-depth);
+            border: 1px solid var(--border-neutral-variant);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card-component-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-secondary-depth);
+        }
+
+        .feature-card-heading-text {
+            font-size: 1.5rem;
+            font-weight: var(--typography-weight-semibold);
+            margin-bottom: var(--spacing-unit-base);
+            color: var(--primary-color-scheme);
+        }
+
+        .feature-card-description-content {
+            color: var(--text-secondary-shade);
+            line-height: 1.7;
+        }
+
+        .advantages-list-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .advantage-item-container {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: var(--background-primary-tone);
+            border-radius: var(--border-radius-minimal);
+            border-left: 4px solid var(--accent-color-variant);
+        }
+
+        .advantage-number-indicator {
+            background: var(--primary-color-scheme);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--typography-weight-bold);
+            margin-right: var(--spacing-unit-base);
+            flex-shrink: 0;
+        }
+
+        .advantage-content-wrapper {
+            flex: 1;
+        }
+
+        .advantage-title-element {
+            font-weight: var(--typography-weight-semibold);
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-cards-grid-arrangement {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-card-individual-component {
+            background: var(--background-primary-tone);
+            padding: 2rem;
+            border-radius: var(--border-radius-moderate);
+            box-shadow: var(--shadow-primary-depth);
+            position: relative;
+        }
+
+        .testimonial-quote-symbol::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-color-variant);
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            opacity: 0.3;
+        }
+
+        .testimonial-text-content {
+            font-style: italic;
+            margin-bottom: var(--spacing-unit-base);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author-details {
+            font-weight: var(--typography-weight-semibold);
+            color: var(--primary-color-scheme);
+        }
+
+        .requirements-checklist-structure {
+            background: var(--background-primary-tone);
+            padding: 2rem;
+            border-radius: var(--border-radius-moderate);
+            box-shadow: var(--shadow-primary-depth);
+            margin-bottom: 3rem;
+        }
+
+        .requirement-item-element {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-unit-base);
+            padding: var(--spacing-unit-base);
+            background: var(--background-secondary-tone);
+            border-radius: var(--border-radius-minimal);
+        }
+
+        .requirement-check-indicator {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--success-color-indication);
+            border-radius: 50%;
+            margin-right: var(--spacing-unit-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: var(--typography-weight-bold);
+        }
+
+        .legal-disclaimer-section-wrapper {
+            background: var(--background-secondary-tone);
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-neutral-variant);
+        }
+
+        .disclaimer-content-block {
+            font-size: 0.875rem;
+            color: var(--text-secondary-shade);
+            line-height: 1.6;
+        }
+
+        .disclaimer-heading-subsection {
+            font-weight: var(--typography-weight-semibold);
+            color: var(--text-primary-shade);
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .disclaimer-heading-subsection:first-child {
+            margin-top: 0;
+        }
+
+        .footer-navigation-component {
+            background: var(--text-primary-shade);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: var(--spacing-unit-base);
+        }
+
+        .footer-link-element {
+            color: white;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-link-element:hover {
+            opacity: 0.8;
+        }
+
+        .primary-action-button-component {
+            background: linear-gradient(135deg, var(--accent-color-variant) 0%, var(--primary-color-scheme) 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: var(--typography-weight-semibold);
+            border-radius: var(--border-radius-extensive);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-primary-depth);
+        }
+
+        .primary-action-button-component:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-secondary-depth);
+        }
+
+        .floating-cta-button-fixed-position {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--success-color-indication) 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.25rem;
+            font-weight: var(--typography-weight-bold);
+            border-radius: var(--border-radius-extensive);
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            animation: breathing-pulse-animation 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: max-content;
+        }
+
+        .floating-cta-button-fixed-position:hover {
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.5);
+        }
+
+        @keyframes breathing-pulse-animation {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+                box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6);
+            }
+        }
+
+        .work-tasks-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .task-item-card-wrapper {
+            background: var(--background-primary-tone);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-moderate);
+            box-shadow: var(--shadow-primary-depth);
+            text-align: center;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .task-item-card-wrapper:hover {
+            border-color: var(--accent-color-variant);
+        }
+
+        .task-icon-representation {
+            width: 4rem;
+            height: 4rem;
+            background: var(--accent-color-variant);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: var(--typography-weight-bold);
+        }
+
+        .image-container-responsive {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .content-image-element {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-moderate);
+            box-shadow: var(--shadow-primary-depth);
+        }
+
+        @media (max-width: 768px) {
+            .primary-heading-typography {
+                font-size: 2rem;
+            }
+            
+            .section-heading-element {
+                font-size: 2rem;
+            }
+            
+            .features-grid-layout-system {
+                grid-template-columns: 1fr;
+            }
+            
+            .advantages-list-structure {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-cards-grid-arrangement {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-cta-button-fixed-position {
+                padding: 1rem 2rem;
+                font-size: 1.125rem;
+            }
+            
+            .footer-links-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .layout-section-wrapper {
+                padding: 0 0.75rem;
+            }
+            
+            .content-section-block {
+                padding: 2rem 0;
+            }
+            
+            .header-hero-section-component {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body class="document-body-container">
+    <header class="header-hero-section-component">
+        <div class="layout-section-wrapper">
+            <div class="hero-content-container">
+                <h1 class="primary-heading-typography">Lucrează de Acasă, Obține Venit Suplimentar</h1>
+                <p class="secondary-heading-typography">Prin completarea sarcinilor, câștigă venit flexibil, optimizează-ți timpul și stilul de viață.</p>
+                <button class="primary-action-button-component" onclick="r7()">Începe Acum</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="content-section-block">
+        <div class="layout-section-wrapper">
+            <div class="image-container-responsive">
+                <img src="img/1.jpg" alt="Lucru de acasă" class="content-image-element">
+            </div>
+            <p class="descriptive-text-paragraph">
+                Suntem o platformă certificată de promovare a aplicațiilor mobile, colaborând cu multiple companii tehnologice pentru a oferi utilizatorilor oportunități simple de muncă part-time. Prin participarea la descărcarea aplicațiilor, sondajele și alte sarcini, poți câștiga ușor venit suplimentar în timpul liber.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section-block">
+        <div class="layout-section-wrapper">
+            <h2 class="section-heading-element">Caracteristicile Noastre</h2>
+            <p class="descriptive-text-paragraph">
+                Ne dedicăm să oferim modalități de lucru flexibile, sigure și ușor de învățat, fără operațiuni complexe sau experiență necesară.
+            </p>
+            
+            <div class="features-grid-layout-system">
+                <div class="feature-card-component-wrapper">
+                    <h3 class="feature-card-heading-text">Formare Gratuită, Stăpânirea Rapidă a Abilităților</h3>
+                    <p class="feature-card-description-content">
+                        Membrii noi se bucură de 4 zile de formare gratuită, incluzând îndrumări pentru operarea sarcinilor. În timpul formării, vei primi și o <strong>indemnizație de practică</strong>, ajutându-te să începi cu ușurință.
+                    </p>
+                </div>
+                
+                <div class="feature-card-component-wrapper">
+                    <h3 class="feature-card-heading-text">Oportunități de Venit Flexibile</h3>
+                    <p class="feature-card-description-content">
+                        După completarea sarcinilor, venitul variază în funcție de numărul și dificultatea sarcinilor, cu recompense competitive.
+                    </p>
+                </div>
+                
+                <div class="feature-card-component-wrapper">
+                    <h3 class="feature-card-heading-text">Oportunități de Colaborare pe Termen Lung</h3>
+                    <p class="feature-card-description-content">
+                        După alăturare, vei primi alocarea stabilă de sarcini și vei avea oportunitatea să îți extinzi sursele de venit prin colaborare pe termen lung.
+                    </p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="primary-action-button-component" onclick="r7()">Aplică Imediat</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section-block">
+        <div class="layout-section-wrapper">
+            <h2 class="section-heading-element">Conținutul Muncii</h2>
+            <p class="descriptive-text-paragraph">
+                Prin smartphone poți completa următoarele sarcini simple:
+            </p>
+            
+            <div class="work-tasks-grid-layout">
+                <div class="task-item-card-wrapper">
+                    <div class="task-icon-representation">📱</div>
+                    <h3 class="feature-card-heading-text">Descarcă Aplicații Specificate</h3>
+                    <p class="feature-card-description-content">Descarcă și testează aplicații mobile desemnate</p>
+                </div>
+                
+                <div class="task-item-card-wrapper">
+                    <div class="task-icon-representation">📋</div>
+                    <h3 class="feature-card-heading-text">Participă la Sondaje</h3>
+                    <p class="feature-card-description-content">Completează chestionare simple și oferă feedback</p>
+                </div>
+                
+                <div class="task-item-card-wrapper">
+                    <div class="task-icon-representation">⭐</div>
+                    <h3 class="feature-card-heading-text">Asistă la Îmbunătățirea Clasificărilor</h3>
+                    <p class="feature-card-description-content">Ajută la promovarea aplicațiilor în magazinele de aplicații</p>
+                </div>
+            </div>
+            
+            <p class="descriptive-text-paragraph">
+                Toate sarcinile nu implică operațiuni complexe, fiind potrivite pentru majoritatea oamenilor.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section-block">
+        <div class="layout-section-wrapper">
+            <h2 class="section-heading-element">Avantajele aderării</h2>
+            <div class="image-container-responsive">
+                <img src="img/2.jpg" alt="Avantaje" class="content-image-element">
+            </div>
+            
+            <div class="advantages-list-structure">
+                <div class="advantage-item-container">
+                    <div class="advantage-number-indicator">1</div>
+                    <div class="advantage-content-wrapper">
+                        <h3 class="advantage-title-element">Programare Flexibilă a Timpului</h3>
+                        <p>Indiferent dacă te afli acasă, într-o cafenea sau în călătorie, îți poți programa timpul de lucru în funcție de propriul program.</p>
+                    </div>
+                </div>
+                
+                <div class="advantage-item-container">
+                    <div class="advantage-number-indicator">2</div>
+                    <div class="advantage-content-wrapper">
+                        <h3 class="advantage-title-element">Fără Restricții de Locație</h3>
+                        <p>Ai nevoie doar de un smartphone și o conexiune internet fiabilă pentru a începe să lucrezi.</p>
+                    </div>
+                </div>
+                
+                <div class="advantage-item-container">
+                    <div class="advantage-number-indicator">3</div>
+                    <div class="advantage-content-wrapper">
+                        <h3 class="advantage-title-element">Investiție Redusă de Timp</h3>
+                        <p>Ai nevoie să petreci doar puțin timp în fiecare zi pentru a completa sarcinile și a obține venit, potrivit pentru ritmul de viață ocupat.</p>
+                    </div>
+                </div>
+                
+                <div class="advantage-item-container">
+                    <div class="advantage-number-indicator">4</div>
+                    <div class="advantage-content-wrapper">
+                        <h3 class="advantage-title-element">Îndrumări Gratuite</h3>
+                        <p>Oferim suport și formare cuprinzătoare pentru a te ajuta să te adaptezi rapid la conținutul muncii.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="primary-action-button-component" onclick="r7()">Află Cum să Începi Sarcinile</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section-block">
+        <div class="layout-section-wrapper">
+            <h2 class="section-heading-element">Condițiile de Aplicare</h2>
+            <p class="descriptive-text-paragraph">
+                Alăturarea la program este foarte simplă, trebuie doar să îndeplinești următoarele cerințe de bază:
+            </p>
+            
+            <div class="requirements-checklist-structure">
+                <div class="requirement-item-element"> 
+                    <div>
+                        <strong>Minim 22 de ani</strong><br>
+                        Acceptăm doar candidați de 22 de ani și peste.
+                    </div>
+                </div>
+                
+                <div class="requirement-item-element"> 
+                    <div>
+                        <strong>Dispozitiv și Rețea</strong><br>
+                        Posedă un smartphone și asigură-te că ai o conexiune internet stabilă.
+                    </div>
+                </div>
+                
+                <div class="requirement-item-element"> 
+                    <div>
+                        <strong>Iubire pentru Viață</strong><br>
+                        Ai aspirații pentru viață, dorești să îți schimbi calitatea vieții.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section-block">
+        <div class="layout-section-wrapper">
+            <h2 class="section-heading-element">Feedback Real de la Partenerii Noștri</h2>
+            
+            <div class="testimonial-cards-grid-arrangement">
+                <div class="testimonial-card-individual-component testimonial-quote-symbol">
+                    <p class="testimonial-text-content">
+                        "Am început cu scepticism, dar după primele săptămâni am realizat că este o oportunitate reală. Formarea a fost foarte utilă și suportul constant m-a ajutat să înțeleg rapid procesul."
+                    </p>
+                    <div class="testimonial-author-details">- Maria, 28 ani</div>
+                </div>
+                
+                <div class="testimonial-card-individual-component testimonial-quote-symbol">
+                    <p class="testimonial-text-content">
+                        "Flexibilitatea este ceea ce mă atrage cel mai mult. Pot lucra când am timp liber și sarcinile sunt cu adevărat simple. Nu promit minuni, dar pentru venit suplimentar este decent."
+                    </p>
+                    <div class="testimonial-author-details">- Alexandru, 35 ani</div>
+                </div>
+                
+                <div class="testimonial-card-individual-component testimonial-quote-symbol">
+                    <p class="testimonial-text-content">
+                        "Ca student, acest lucru mi-a permis să îmi completez bugetul fără să afectez studiile. Sarcinile sunt clare și echipa este foarte comunicativă când am întrebări."
+                    </p>
+                    <div class="testimonial-author-details">- Andreea, 24 ani</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section-block">
+        <div class="layout-section-wrapper">
+            <h2 class="section-heading-element">Contactează-ne pentru Mai Multe Informații!</h2>
+            <div class="image-container-responsive">
+                <img src="img/3.jpg" alt="Contact" class="content-image-element">
+            </div>
+            <p class="descriptive-text-paragraph">
+                Indiferent dacă vrei să îți mărești venitul sau cauți un job part-time flexibil, te primim cu brațele deschise. Contactează-ne imediat pentru a obține informații detaliate și pentru a începe să lucrezi.
+            </p>
+            <div style="text-align: center;">
+                <button class="primary-action-button-component" onclick="r7()">Contactează-ne Acum</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="legal-disclaimer-section-wrapper">
+        <div class="layout-section-wrapper">
+            <div class="disclaimer-content-block">
+                <h3 class="disclaimer-heading-subsection">🔹 Explicația Naturii Serviciilor</h3>
+                <p>• Această platformă este un <strong>proiect de cercetare de piață și experiență de marketing digital</strong>, menit să ofere utilizatorilor oportunități de a participa la testarea aplicațiilor și sondaje, <strong>nu constituie o relație de angajare sau o sursă de venit fixă</strong>.</p>
+                <p>• Toate sarcinile (cum ar fi descărcarea aplicațiilor, feedback-ul sondajelor) aparțin <strong>activităților de cercetare de piață</strong>, menite să optimizeze ecosistemul aplicațiilor mobile, <strong>nu garantează nicio formă de profit</strong>.</p>
+
+                <h3 class="disclaimer-heading-subsection">🔹 Legile Aplicabile și Reglementări</h3>
+                <p>• Respectă <strong>Codul Muncii din România</strong>, clarificând că acest serviciu aparține cercetării de piață cu participare voluntară, nu o relație de lucru formală.</p>
+                <p>• Conform cu <strong>Regulamentul General privind Protecția Datelor (GDPR) al UE</strong>, datele utilizatorilor sunt folosite doar pentru analiză de cercetare, nu vor fi divulgate sau folosite pentru promovare comercială.</p>
+                <p>• Urmează ghidurile de practici comerciale echitabile ale <strong>ANPC (Autoritatea Națională pentru Protecția Consumatorilor din România)</strong>, asigurând transparența și drepturile utilizatorilor.</p>
+
+                <h3 class="disclaimer-heading-subsection">🔹 Avertismente Importante privind Riscurile</h3>
+                <p>• <strong>Nu este o relație de angajare</strong>: Participarea la acest proiect <strong>nu constituie un contract de muncă</strong>, fără salariu fix sau beneficii de asigurări sociale.</p>
+                <p>• <strong>Incertitudinea profiturilor</strong>: Toate recompensele (cum ar fi indemnizațiile, cardurile cadou) sunt <strong>răspunsuri la participarea voluntară</strong>, suma și frecvența nu sunt fixe.</p>
+                <p>• <strong>Responsabilitate personală</strong>: Utilizatorii trebuie să judece singuri fezabilitatea sarcinilor, platforma <strong>nu își asumă nicio responsabilitate financiară sau legală</strong>.</p>
+                <p>• <strong>Securitatea datelor</strong>: Deși folosim măsuri de criptare, activitățile pe internet încă prezintă riscuri de scurgere de date, te rugăm să fii prudent când transmiți informații personale.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-navigation-component">
+        <div class="layout-section-wrapper">
+            <div class="footer-links-container">
+                <a href="Privacy.html" class="footer-link-element">Politica de Confidențialitate</a>
+                <a href="terms.html" class="footer-link-element">Acordul Utilizatorului</a>
+				<a href="Disclaimer.html" class="footer-link-element">Declinare de responsabilitate</a>
+            </div>
+            <p style="font-size: 0.875rem; opacity: 0.8;">© 2025 Toate drepturile rezervate</p>
+        </div>
+    </footer>
+
+    <button class="floating-cta-button-fixed-position" onclick="r7()">
+        💬 Începe Conversația pe WhatsApp
+    </button>
+
+    <script>
+        function r7() {
+            window.open('https://wa.me/', '_blank');
+        }
+
+        // Smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all content sections
+        document.querySelectorAll('.content-section-block').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
